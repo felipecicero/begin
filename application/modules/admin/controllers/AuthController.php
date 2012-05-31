@@ -46,7 +46,7 @@ class Admin_AuthController extends Zend_Controller_Action
 					$authNamespace->user = $info;
 						                
 	                //Redireciona para o Controller protegido
-	                return $this->_helper->redirector->goToRoute( array('module'=>'protesto', 'controller' => 'index'), null, true);
+	                return $this->_helper->redirector->goToRoute( array('module'=>'registro', 'controller' => 'index'), null, true);
 	            } else {
 	                //Dados inválidos	                
 	                ZendX_JQuery_FlashMessenger::addMessage("Usuário ou senha inválidos!!", 'error');
