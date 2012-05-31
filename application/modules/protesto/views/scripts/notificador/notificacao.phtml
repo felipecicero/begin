@@ -1,0 +1,45 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Notificação</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'pdfnotificacaogrupo'), null, true); ?>" >Gerar todas as notificações</a>
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'notificacoes'), null, true); ?>" >Notificações Geradas</a>
+
+
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>Protocolo</th>
+            <th>Espécie</th>
+            <th>Notificação</th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->titulos as $titulo ) { $i=$i+1; ?>
+            <tr class="<?php if($this->escape($titulo->docamigo)) echo 'amigo' ; ?>">
+                <td><?php echo $i;?></td>
+                <td><?php echo $this->escape($titulo->nome); ?></td>
+                <td><?php echo $this->documento($this->escape($titulo->numeroidentificacao), $this->escape($titulo->tipoidentificacao)); ?></td>
+                <td><?php echo $this->escape($titulo->protocolo); ?></td>
+                <td><?php echo $this->escape($titulo->especie); ?></td>
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto',
+                                       'controller' => 'notificador',
+                                       'action'     => 'pdfnoticacao',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Editar">ícone</a>
+                    &nbsp;
+                
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>
+

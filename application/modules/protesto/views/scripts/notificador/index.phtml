@@ -1,0 +1,44 @@
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+<h1>Títulos</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul id="menu-grid">
+	<!-- Notificador -->
+	<?php if($this->cartorio->notificacao == 1){ // se o cartorio escolheu a notificacao por boleto?>	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'boletos'), null, true); ?>" title="Gerar boletos">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/boleto.png" /><br/>Boleto</a></li>	
+	<?php } else{ ?>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador','action' => 'notificacao'), null, true); ?>" title="Gerar notificação">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/notificacao.png" /><br/>Notificação</a></li>
+	<?php } ?>
+	<!-- Verificador -->
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'aceite'), null, true); ?>" title="Digitalizar Canhoto de aceite.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/aceite.png" /><br/>Aceite de Notificação</a></li>	
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador','action' => 'listaedital'), null, true); ?>" title="Gerar documento de edital.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/edital.png" /><br/>Editais</a></li>
+	<br />
+	<!-- Pagamento -->
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'pagamento','action' => 'pagartitulo'), null, true); ?>" title="Realizar pagamento de título.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/pagamento.png" /><br/>Pagamento de Títulos</a></li>
+	
+	<!-- Protestador -->
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'protestos'), null, true); ?>" title="Titulos á protestar.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/protestar.png" /><br/>Títulos à protestar</a></li>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'listarserasa'), null, true); ?>" title="Gerar arquivos para o Serasa.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/serasa.png" /><br/>Arquivo para o Serasa</a></li>
+	<br />
+	<!-- Situações -->
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'suspender'), null, true); ?>" title="Suspender protestos.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/suspender.png" /><br/>Suspender protesto</a></li>
+		
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'cancelar'), null, true); ?>" title="Cancelar protestos.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/cancelar.png" /><br/>Cancelar protesto</a></li>
+		
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'sustar'), null, true); ?>" title="Sustar títulos.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/sustar.png" /><br/>Sustar Título</a></li>
+	
+	<hr class="clear"/>
+</ul>

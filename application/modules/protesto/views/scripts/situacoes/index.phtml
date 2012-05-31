@@ -1,0 +1,16 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Situações</h1>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes', 'action' => 'suspender'), null, true); ?>">
+		Suspender Protesto</a></li>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes', 'action' => 'cancelar'), null, true); ?>">
+		Cancelar Protesto</a></li>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes', 'action' => 'sustar'), null, true); ?>">
+		Sustar Título</a></li>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes', 'action' => 'titulos'), null, true); ?>">
+		Títulos</a></li>
+</ul>

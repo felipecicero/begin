@@ -1,0 +1,47 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+<h1>Abrangências</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'cadastrarabrangencia'), null, true); ?>" title="Cadastrar abrangência">Cadastrar abrangência</a>
+	</li>
+</ul>
+
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Cidade</th>
+            <th>Início</th>   
+            <th>Limite</th>          
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->abrangencias as $abrangencia ) { $i=$i+1; ?>
+            <tr>
+                <td align="center"><?php echo $i; ?></td>
+                <td align="center"><?php echo $this->escape($abrangencia->cidade); ?></td>
+                <td align="center"><?php echo $this->cep($this->escape($abrangencia->inicio)); ?></td> 
+                <td align="center"><?php echo $this->cep($this->escape($abrangencia->limite)); ?></td> 
+                           
+                <td align="center">
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'editarbrangencia',
+                                       'idFaixacep'         => $this->escape($abrangencia->idFaixacep))); ?>" title="Editar">Editar</a>
+                    &nbsp;
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'deletarbrangencia',
+                                       'idFaixacep'         => $this->escape($abrangencia->idFaixacep))); ?>" title="Apagar">Apagar</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

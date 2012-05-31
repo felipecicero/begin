@@ -1,0 +1,46 @@
+<a href="<?php echo $this->url(array( 'module'=>'protesto', 'controller' => 'notificador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+<h1>Boletos</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'boletoretorno')); ?>" title="Remessa">Importar arquivo de Retorno</a>
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'boletoremessa'), null, true); ?>">Gerar Arquivo de Remessa</a>
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'pdfboletogrupo'), null, true); ?>" >Gerar todos os boletos</a>
+
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'notificacoes'), null, true); ?>" >Boletos Gerados</a>
+
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>Protocolo</th>
+            <th>Espécie</th>
+            <th>Boleto</th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->titulos as $titulo ) { $i=$i+1; ?>
+            <tr class="<?php if($this->escape($titulo->docamigo)) echo 'amigo' ; ?>">
+                <td><?php echo $i;?></td>
+                <td><?php echo $this->escape($titulo->nome); ?></td>
+                <td><?php echo $this->documento($this->escape($titulo->numeroidentificacao), $this->escape($titulo->tipoidentificacao)); ?></td>
+                <td><?php echo $this->escape($titulo->protocolo); ?></td>
+                <td><?php echo $this->escape($titulo->especie); ?></td>
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto',
+                                       'controller' => 'notificador',
+                                       'action'     => 'pdfboleto',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Editar">ícone</a>
+                    &nbsp;
+                
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+          
+</table>

@@ -1,0 +1,47 @@
+<a href="<?php echo $this->url(array('module'=>'admin', 'controller' => 'cartorio', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Lista de Amigos/Políticos</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module'=>'admin', 'controller' => 'cartorio', 'action'=> 'cadastraramigos'), null, true); ?>" title="Novo Amigo/Politico">Novo Amigo/Político</a>
+	</li>
+</ul>
+
+<table cellspacing="1" cellpadding="1" border="1" class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>Observações</th>            
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->amigos as $amigo ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($amigo->nome); ?></td>
+                <td><?php echo $this->documento($this->escape($amigo->documento), $this->escape($amigo->tipo_documento)); //$this->documento($this->escape($titulo->numeroidentificacao), (int)$this->escape($titulo->tipoidentificacao)); ?></td>
+                <td><?php echo $this->escape($amigo->observacoes); ?></td>                
+                <td align="center">
+                    <a href="<?php echo $this->url(array(
+                    				   'module'=>'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'editaramigo',
+                                       'idAmigo'         => $this->escape($amigo->idAmigo))); ?>" title="Editar">Editar</a>
+                    &nbsp;
+                    <a href="<?php echo $this->url(array(
+                    				   'module'=>'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'deletaramigo',
+                                       'idAmigo'         => $this->escape($amigo->idAmigo))); ?>" title="Apagar">Apagar</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

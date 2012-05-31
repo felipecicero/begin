@@ -1,0 +1,11 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'emolumentos')); ?>" id="back-link">voltar</a>
+
+<h1>Editar Emolumentos</h1>
+ 
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+ 
+<?php 
+	  if ( isset($this->form) ) { 
+    	 echo $this->form; 
+	  } 
+?>

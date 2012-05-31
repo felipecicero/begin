@@ -1,0 +1,34 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Importador</h1>
+<hr/>
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul id="menu-grid" class="min">
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador', 'action' => 'importar'),  null, true); ?>" title="Importar remessa, desistência ou cancelamento.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/importar.png" />
+		<br />
+		Importar (B, DP, CP)
+	</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador', 'action' => 'arquivosimportados'), null, true); ?>" title="Listar arquivos importados.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/arquivo.png" />
+			<br />
+			Arquivos Importados
+		</a>
+	</li>
+	<li><a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador', 'action' => 'retornos'), null, true); ?>" title="Retornos.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/retorno.png" />
+			<br />
+			Arquivos Exportados
+		</a>
+	</li>	
+	<li><a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador', 'action' => 'digitalizarprotesto'), null, true); ?>" title="Entrada manual de títulos.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/digitalizar.png" />
+			<br />
+			Entrada Manual de Títulos
+		</a>
+	</li>
+</ul>

@@ -1,0 +1,23 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Relatórios</h1>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+<ul id="menu-grid">
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'relatorios', 'action' => 'certidoes')); ?>" title="Gerar certidão negativa/positiva de protesto.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" />
+			<br/>
+			Certidões
+		</a>
+	</li>
+	
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'relatorios', 'action' => 'certidaointeiroteor')); ?>" title="Gerar certidão de inteiro teor.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" />
+			<br/>
+			Certidão de Inteiro Teor
+		</a>
+	</li>	
+	<hr class="clear"/>
+</ul>

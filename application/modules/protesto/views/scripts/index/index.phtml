@@ -1,0 +1,47 @@
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+<ul id="menu-grid">
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario','action' => 'index')); ?>" title="Usuários, grupos e permissões.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/seguranca.png" />
+			<br/>
+			Segurança
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'index')); ?>" title="Administração dos dados sobre o Cartório e outros.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/administracao.png" />
+			<br/>
+			Administração
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador','action' => 'index')); ?>" title="Entrada de títulos.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/entrada.png" />
+			<br/>
+			Entrada
+		</a>
+	</li>
+	<br/>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'notificador','action' => 'index')); ?>" title="Verificar, notíficar, protestar, suspender, cancelar e sustar títulos.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/titulos.png" />
+			<br/>
+			Títulos
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'situacoes','action' => 'titulos')); ?>" title="Consulta de títulos.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/consulta.png" />
+			<br/>
+			Consulta
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'relatorios','action' => 'index')); ?>" title="Relatórios, Certidões.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/relatorios.png" />
+			<br/>
+			Relatórios
+		</a>
+	</li>
+	<hr class="clear"/>
+</ul>

@@ -1,0 +1,44 @@
+<h3>TABELIONATO DE PROTESTOS DE PALMAS - TO</h3>
+<h3>EDITAL DE NOTIFICAÇÃO</h3>
+<h4>Faço saber a todos quantos o presente edital virem ou dele conhecimento tiverem, que foram apresentados neste Tabelionato para serem protestados os seguintes titulos:</h4>
+
+<table border="1" cellspacing="1" cellpadding="1" >
+    <thead>
+        <tr>
+            <th> APONT. </th>
+            <th> DT.VENC. </th>
+            <th> Nº.TITULO </th>
+            <th> VL.TITULO </th>
+            <th> DEVEDOR </th>
+            <th> CREDOR </th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php foreach ( $this->titulo as $titulo ) { ?>
+            <tr class="<?php if($this->escape($titulo->docamigo)) echo 'amigo' ; ?>">
+            	<td><?php echo $this->escape($titulo->apontamento); ?></td>
+            	<td><?php echo $this->date($this->escape($titulo->vencimento)); ?></td>
+            	<td><?php echo $this->escape($titulo->numerotitulo); ?></td>
+            	<td><?php echo "R$ ".$this->valor($this->escape($titulo->valor)); ?></td>
+            	<td><?php echo $this->escape($titulo->devedor); ?></td>
+            	<td><?php echo $this->escape($titulo->credor); ?></td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+</table>
+<h4>Por não ter sido possível encontrar os responsáveis acima, pelos motivos citados no Art. 15 da lei nº 9.492 de 10/09/97, pelo presente ficam eles intimados para pagarem, ou alegarem porque não o fazem, sob pena de protesto. Para evitá-lo, o interessado deverá comparecer neste Tabelionato, situado na quadra 108 sul av lo 03 lt 24, até  05/01/2012.
+Dado e passado nesta cidade. Palmas - TO, 02 de janeiro de 2012 . Geraldo Henrique Moromizato - Tabelião.</h4>
+
+<style type="text/css">
+	th{font-size: 10px};
+	th{font-style: bold};
+
+	td{font-size: 10px};
+	td{font-style: bold};
+
+	h3{font-size: 10px};
+	h3{font-style: bold};
+
+	h4{font-size: 10px};
+	h4{font-style: bold};
+</style>

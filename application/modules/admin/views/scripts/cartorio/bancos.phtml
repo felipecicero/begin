@@ -1,0 +1,54 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Listas de Bancos</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action'=> 'cadastrarbanco'), null, true); ?>" title="Cadastrar Custa">Cadastrar Banco</a>
+	</li>
+</ul>
+ 
+ 
+<table class="display" id="tabela"  >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Código</th>
+            <th>Nome</th>            
+            <th></th>
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->bancos as $banco ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($banco->codigo); ?></td>
+                <td><?php echo $this->escape($banco->nome); ?></td> 
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                	                   'module' => 'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'agencias',
+                                       'idBanco'         => $this->escape($banco->idBanco))); ?>" title="Editar">Agências</a>
+                </td>              
+                <td align="center">
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'editarbanco',
+                                       'idBanco'         => $this->escape($banco->idBanco))); ?>" title="Editar">Editar</a>
+                    &nbsp;
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin',
+                                       'controller' => 'cartorio',
+                                       'action'     => 'deletarbanco',
+                                       'idBanco'         => $this->escape($banco->idBanco))); ?>" title="Apagar">Apagar</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

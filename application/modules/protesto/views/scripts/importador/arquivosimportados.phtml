@@ -1,0 +1,49 @@
+<a href="<?php echo $this->url(array('module'=>'protesto','controller' => 'importador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Arquivos Importados</h1>
+<hr/>
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'importador', 'action' => 'importar'), null, true); ?>" title="Importar Arquivo">Importar (B, DP, CP)</a>
+	</li>
+</ul>
+
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Data/Hora</th>
+            <th>Arquivo</th>
+            <th>Tipo</th>
+            <th>Remetente</th>
+            <th>Usuário Importador</th>             
+        </tr>
+     </thead>
+     <tbody>     
+        <?php $i=0; foreach ( $this->arquivos as $arquivo ) { $i=$i+1; ?>
+        <?php 
+        	  $dt_envio = explode(" ", $arquivo->data_envio);
+			  $data = implode("/", array_reverse(explode("-", ($dt_envio[0]) )));
+			  $hora = $dt_envio[1];
+		?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $data . " " .$hora; ?></td>
+                <td>
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto',
+                                       'controller' => 'importador',
+                                       'action'     => 'downloadarquivo',
+                                       'idArquivo'         => $this->escape($arquivo->idArquivo))); ?>" title="Download"><?php echo $this->escape($arquivo->arquivo); ?></a>
+                
+                </td>
+                <td><?php if($this->escape($arquivo->tipo) == 1) echo 'Remessa'; if($this->escape($arquivo->tipo) == 2) echo 'Desistência'; if($this->escape($arquivo->tipo) == 3) echo 'Cancelamento'; if($this->escape($arquivo->tipo) == 7) echo 'Digitalizado'; ?></td>
+                <td><?php echo  $this->escape($arquivo->remetente); ?></td>
+                <td><?php echo $this->escape($arquivo->nome); ?></td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

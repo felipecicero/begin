@@ -1,0 +1,49 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Aceite de notificação</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+ 
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>Protocolo</th>
+            <th>Espécie</th>
+            <th>Aceite</th>
+            <th>Edital</th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->titulos as $titulo ) { $i=$i+1; ?>
+            <tr class="<?php if($this->escape($titulo->docamigo)) echo 'amigo' ; ?>">
+                <td><?php echo $i; //if($this->escape($titulo->idEdital)) echo " - EDITAL" ; ?></td>
+                <td><?php echo $this->escape($titulo->nome); ?></td>
+                <td><?php echo $this->documento($this->escape($titulo->numeroidentificacao), $this->escape($titulo->tipoidentificacao)); ?></td>
+                <td><?php echo $this->escape($titulo->protocolo); ?></td>
+                <td><?php echo $this->escape($titulo->especie); ?></td>
+                 <td align="center">
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto', 
+                                       'controller' => 'verificador',
+                                       'action'     => 'digitalizaraceite',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Aceite">ícone</a>
+                    &nbsp;
+                
+                </td>
+                 <td align="center">
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto', 
+                                       'controller' => 'verificador',
+                                       'action'     => 'edital',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Edital">ícone</a>
+                    &nbsp;
+                
+                </td>                
+            </tr>
+        <?php } ?>        
+     </tbody>
+          
+</table>

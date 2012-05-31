@@ -1,0 +1,243 @@
+html{margin: 0px;}
+body{
+	margin: 0px;
+	background: url(bg.jpg) repeat-x;
+	font-family: Segoe Ui, Arial;
+	font-size: 14px;
+}
+
+a{
+	color:#3079f0;
+	text-decoration: none;
+}
+a:hover{
+	color:#df483e;
+}
+
+br{
+	clear:both;
+}
+
+h1{
+	font-weight: normal;
+	margin: 15px 0 10px 0;
+	line-height: 35px;
+}
+h2{
+	font-weight: normal;
+	margin: 15px 0 10px 0;
+	line-height: 30px;
+}
+h3{
+	font-weight: normal;
+	margin: 15px 0 10px 0;
+	padding: 0 10px;
+	background: #00c0ff;
+	color: #fff;
+	display: block;
+	line-height: 25px;
+}
+
+label{
+	display: inline-block;
+}
+
+fieldset{
+	border: solid 1px #e9e9e9;
+}
+fieldset legend{
+	font-size: 18px;
+}
+
+.errors{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	margin: 0px 15px 10px;
+	color: #ff4343;
+}
+
+.clear{
+	margin: 0px;
+	height: 1px;
+	border: none;
+	display: block;
+	clear: both;
+}
+
+#page{
+	display:block;
+	width: 940px;
+	margin: auto;
+}
+#header{
+	display:block;
+	height: 81px;
+}
+#logo{
+	float: left;
+}
+#menu-global{
+	margin: 0px;
+	list-style: none;
+}
+#menu-global li{
+	display: inline-block;
+	float:left;
+	height: 20px;
+	margin: 0 20px;
+	margin-top: 25px;
+}
+#menu-global li a{
+	text-decoration: none;
+	color: white;
+}
+#menu-global li a:hover{
+	text-decoration: underline;
+}
+#menu-grid{
+	width: 900px;
+	padding: 10px 20px;
+	list-style: none;
+	margin: 0px;
+	text-align: center;
+}
+#menu-grid li{
+	width: 150px;
+	height: 150px;
+	margin: 20px;
+	display: inline-block;
+	text-align: center;
+}
+#menu-grid.min li{
+	width: 150px;
+	height: 150px;
+	margin: 20px;
+	display: inline-block;
+	text-align: center;
+}
+#menu-grid li a{color: #222;}
+#menu-grid li a:hover{font-weight: bold; }
+#footer{
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding-top: 15px;
+}
+#menu-footer{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	float: left;
+}
+#powered{
+	float: right;
+}
+#infos{
+	color: white;
+	height: 20px;
+	padding-top: 10px;
+	display: block;
+	text-align: right;
+}
+#logout{ 
+	float: right;
+	color: white;
+	margin-left: 50px;
+}
+#back-link{
+	float: left;
+	height: 32px;
+	line-height: 32px;
+	margin: 18px 20px 0 0;
+	width: 75px;
+	padding-right: 10px;
+	text-align: right;
+	color: white;
+	background: url(bg-back.png) no-repeat;
+}
+
+#form-tab{
+	width: 450px;
+	float: right;
+	margin-top: 12px;
+}
+
+#uniform-submitbutton-import{
+	margin: 12px;
+}
+
+#dialog-modal{
+	display: none;
+}
+
+#progressbar { 
+	background-image: url(pbar-ani.gif); 
+	width: 100%; 
+	height: 22px; 
+	display: block; 
+	margin: 12px 0;
+}
+
+.half-form{
+	width: 470px;
+	float: left;
+	display: block;
+}
+
+.float-fields .field{
+	float: left;
+	margin: 0px 10px;
+}
+
+.field + .option-field{
+	clear:both;	
+}
+
+.option-field{
+	float: left;
+	width: 180px;
+	padding-right: 22px;
+	margin: 0px 10px;
+}
+.option-field label{
+	float: right;
+	width: 155px;
+	line-height: 22px;
+}
+.checker{
+	margin: 0px 5px 3px 0 !important;
+}
+.titulo-data{
+	font-weight: bold; padding-right: 5px; min-width: 130px; display: inline-block; 
+}
+.titulo-status{
+	color: #00569f;
+}
+
+.ui-dialog-titlebar{
+	display: none;
+}
+
+
+.icon-button{
+	height: 32px;
+	line-height: 32px;
+	padding-left: 35px;
+	margin-right: 10px;
+	display: inline-block;
+}
+.icon-button.boleto{ background: url(../images/icon-boleto.png) no-repeat;}
+.icon-button.edital{ background: url(../images/icon-edital.png) no-repeat;}
+.icon-button.cancelar{ background: url(../images/icon-cancelar.png) no-repeat;}
+.icon-button.suspender{ background: url(../images/icon-suspender.png) no-repeat;}
+.icon-button.sustar{ background: url(../images/icon-sustar.png) no-repeat;}
+.icon-button.protestar{ background: url(../images/icon-protestar.png) no-repeat;}
+.icon-button.desfazer{ background: url(../images/icon-desfazer.png) no-repeat;}
+.icon-button.pagar{ background: url(../images/icon-pagar.png) no-repeat;}
+
+
+/* MODAL */
+.load { position: absolute; top: 50%; left: 50%; width: 88px; height: 78px; margin: -39px 0 0 -44px; z-index: 99999;}
+.bg_modal { position: absolute; top: 0; left: 0; width: 100px; height: 90px; z-index: 99998; }
+.view_modal { position: absolute; left: 50%; top: 50%; text-align: left; z-index: 99998; }
+.modal { visibility: hidden; cursor:pointer; }

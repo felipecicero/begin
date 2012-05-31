@@ -1,0 +1,20 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Verificador</h1>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'aceite'), null, true); ?>" title="Digitalizar Canhoto de aceite.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Aceite de Notificação</a></li>	
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador','action' => 'listaedital'), null, true); ?>" title="Gerar documento de edital.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Editais</a></li>
+		
+		
+		
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'aceite'), null, true); ?>" title="Digitalizar Canhoto">
+		Aceite de Notificação</a></li>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'listaedital'), null, true); ?>" title="Edital">
+		Editais</a></li>
+</ul>

@@ -1,0 +1,47 @@
+<a href="<?php echo $this->url(array('module'=>'admin', 'controller' => 'cartorio', 'action'=> 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Editar Cartório</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<?php echo $this->form; ?>
+
+<script>
+
+$(function() {
+	
+	$('#banco').change(function() { 
+		
+    	var id = $(this).val();		    	    			     
+
+    	$.ajax({
+    		url:"<?php echo $this->url(array('module'=>'protesto', 'controller'=>'importador', 'action'=>'getagencias'), null, true); ?>",
+    		dataType:'html',
+    		encoding: 'utf-8',
+   			data:{id: id},
+    		type:'GET',
+    		success: function(data){
+            			$('#idAgencia').html(data);
+    				 }
+		});
+	});
+
+	$('#uf').change(function() { 
+		
+    	var id = $(this).val();		    	    			     
+
+    	$.ajax({
+    		url:"<?php echo $this->url(array('module'=>'admin', 'controller'=>'importador' , 'action'=>'getcidades'), null, true); ?>",
+			dataType:'html',
+			encoding: 'utf-8',
+				data:{id: id},
+			type:'GET',
+			success: function(data){
+        				$('#idCidade').html(data);
+					 }
+		});
+	});
+	
+});
+
+</script>

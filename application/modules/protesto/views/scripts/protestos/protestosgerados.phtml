@@ -1,0 +1,41 @@
+<a href="<?php echo $this->url(array('module'=>'protesto','controller' => 'protestos', 'action' => 'protestos'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Instrumentos de Protestos Gerados</h1>
+<hr/>
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Data/Hora</th>
+            <th>Arquivo</th>
+            <th>Tipo</th>
+            <th>Usuário que gerou</th>             
+        </tr>
+     </thead>
+     <tbody>     
+        <?php $i=0; foreach ( $this->arquivos as $arquivo ) { $i=$i+1; ?>
+        <?php 
+        	  $dt_envio = explode(" ", $arquivo->data_envio);
+			  $data = implode("/", array_reverse(explode("-", ($dt_envio[0]) )));
+			  $hora = $dt_envio[1];
+		?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td align="center"><?php echo $data . " " .$hora; ?></td>
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto',
+                                       'controller' => 'importador',
+                                       'action'     => 'downloadarquivo',
+                                       'idArquivo'         => $this->escape($arquivo->idArquivo))); ?>" title="Download"><?php echo $this->escape($arquivo->arquivo); ?></a>
+                
+                </td>
+                <td align="center"><?php if($this->escape($arquivo->tipo) == 11) echo 'Instrumentos de Protestos'; ?></td>
+                <td align="center"><?php echo $this->escape($arquivo->nome); ?></td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

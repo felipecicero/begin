@@ -1,0 +1,57 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Lista de Perfis</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'perfil', 'action' => 'cadastrarperfil'), null, true); ?>" title="Novo Usuário">Novo Perfil</a></li>
+</ul>
+
+<table class="display" id="tabela" >
+
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Nome</th>
+            <th>Descricao</th>            
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->perfis as $perfil ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo ucfirst($this->escape($perfil->papel)); ?></td>
+                <td><?php echo $this->escape($perfil->descricao); ?></td>                                
+                <td align="center">
+                	<?php if($perfil->idPapel != 1){?>
+	                    <a href="<?php echo $this->url(array(
+	                                       'module' => 'admin',
+	                                       'controller' => 'perfil',
+	                                       'action'     => 'editarperfil',
+	                                       'idPapel'         => $this->escape($perfil->idPapel))); ?>" title="Editar">Editar</a>
+	                    &nbsp;
+	                    <a href="<?php echo $this->url(array(
+	                                       'module' => 'admin',
+	                                       'controller' => 'perfil',
+	                                       'action'     => 'deletarperfil',
+	                                       'idPapel'         => $this->escape($perfil->idPapel))); ?>" title="Apagar">Apagar</a>
+                	<?php } ?>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	oTable = $('#example').dataTable({
+		"bPaginate": true,
+		"bJQueryUI": false,
+		"sPaginationType": "full_numbers"
+	});
+});
+</script>

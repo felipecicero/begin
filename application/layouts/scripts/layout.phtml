@@ -1,0 +1,66 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cartório de Protestos</title>
+
+	<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/global.css') ?>
+	<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/uniform.default.css') ?>
+	<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/jquery_notification.css') ?>
+	<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/ui-lightness/jquery-ui-1.8.18.custom.css') ?>
+	<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/table.css') ?>
+	
+	<?php $this->headLink()->appendStylesheet($this->baseUrl().'/css/flashMessenger.css') ?>
+	
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/jquery.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/jquery-ui-1.8.18.custom.min.js') ?>
+	
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/scripts.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/meiomask.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/calendario.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/calendario-min.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/jquery.dataTables.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/jquery.dataTables.min.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/jquery.uniform.min.js') ?>
+	<?php $this->headScript()->appendFile($this->baseUrl().'/js/jquery_notification.js') ?>
+	
+	<?php echo $this->cssHelper() ?>
+    <?php echo $this->headScript() ?>
+</head>
+<body>
+	<div id="page">
+		<div id="header">
+			<a id="logo" href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'index', 'action' => 'index')); ?>">
+				<img src="<?php echo $this->baseUrl(); ?>/css/logo.png">
+			</a>
+			<div id="infos">
+				<?php $user = new Zend_Session_Namespace('user_data'); ?>
+				<?php if(!empty($user->user)){ ?>
+					Olá, <?php echo $user->user->nome; ?> <a href="<?php echo $this->url(array('module' => 'admin','controller' => 'auth', 'action' => 'logout'), null, true); ?>" id="logout">sair</a>
+				<?php }?>
+			</div>
+			<ul id="menu-global">
+				<li><a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'index', 'action' => 'index'), 'default', true); ?>">Início</a></li>
+				
+				
+			</ul>
+		</div>
+		<div id="content">
+			<hr class="clear" />			
+			<?php echo $this->layout()->content ?>
+			<hr class="clear" />
+		</div>
+		<div id="footer">
+			<ul id="menu-footer">
+				<li>Ajuda</li>
+			</ul>
+			<span id="powered">Desenvolvido por Begin Solutions.</span>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(function(){ 
+		$("input, textarea, select, button").uniform();
+	});
+</script>

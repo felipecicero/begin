@@ -1,0 +1,61 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Lista de Títulos</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<span style="float: right;"> 
+	<input type="submit" name="show" id="show" value="Filtros Avançados" /><!-- para aparecer/escoder os campos de filtro do formulario -->
+	<input type="submit" name="hide" id="hide" value="Remover Filtros" />
+</span>
+<hr class="clear" />
+<table class="display" id="tabela" >
+
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Protocolo</th>
+            <th>Nome</th>            
+            <th>CPF/CNPJ</th>            
+            <th>Espécie</th>
+            <th>Valor R$</th>
+            <th>Situação Atual</th>
+
+        </tr>
+     </thead>
+     
+     <tfoot>
+     	<tr>
+     		<th><input type="hidden" name="init" 		value="" size="1"  /></th>
+     		<th><input type="text" name="protocolo" value="" size="1"  /></th>
+     		<th align="left"><input type="text" name="nome" value="" size="35" /></th>
+     		<th><input type="text" name="cpfcnpj" 	value="" size="5"  /></th>
+     		<th><input type="text" name="especie" 	value="" size="1"  /></th>
+     		<th><input type="text" name="valor" 	value="" size="1"  /></th>
+     		<th><input type="text" name="situacao" 	value="" size="1"  /></th>
+     	</tr>
+     </tfoot>
+     
+     
+     <tbody>
+        <?php $i=0; foreach ( $this->titulos as $titulo ) { $i=$i+1; ?>
+        	
+            <tr class="<?php if($this->escape($titulo->docamigo)) echo 'amigo' ; ?>">
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($titulo->protocolo); ?></td>
+                <td>
+                	<a href="<?php echo $this->url(array(
+                						'module'=>'protesto', 
+                                       'controller' => 'situacoes',
+                                       'action'     => 'titulo',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="<?php $this->custas($titulo->idProtesto, $titulo->valortitulo);?>"><?php echo $this->escape($titulo->nome); ?></a>
+                </td> 
+                <td><?php echo $this->documento($this->escape($titulo->numeroidentificacao), (int)$this->escape($titulo->tipoidentificacao)); ?></td>                
+                <td align="center"><?php echo $this->escape($titulo->codigo); ?></td>
+                <td align="right"><?php echo $this->valor($this->escape($titulo->valortitulo)); ?></td>
+                <td align="center"><?php echo $this->escape($titulo->situacaoatual); ?></td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

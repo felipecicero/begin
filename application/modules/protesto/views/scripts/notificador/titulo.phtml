@@ -1,0 +1,87 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'titulos'), null, true); ?>" id="back-link">voltar</a>
+<?php
+	echo"<h1>DADOS DO TÍTULO</h1> ";
+?>   
+<hr />
+<div style="float: left; width: 460px;">     
+	<?php
+		echo "<span class='titulo-data'>Nº Protocolo:</span>" 				. $this->data->protocolo . "<br>";
+		echo "<span class='titulo-data'>Data de entrada:</span>" 			. $this->date($this->data->data_protocolo) . "<br>"; 
+		echo "<span class='titulo-data'>Situação atual:</span>" 			. '<span class="titulo-status">'.$this->data->situacaoatual . "</span><br><br>";
+		
+		echo "<span class='titulo-data'>Livro:</span>" 						. $this->data->livro . "<br>";
+		echo "<span class='titulo-data'>Página:</span>" 					. $this->data->folha . "<br><br>";
+
+		echo "<span class='titulo-data'>Espécie:</span>" 					. $this->data->especie . "<br>";
+		echo "<span class='titulo-data'>Nº Título:</span>" 					. $this->data->numerotitulo . "<br>";
+		echo "<span class='titulo-data'>Valor Título:</span>" 				. 'R$ '.$this->valor($this->data->valortitulo) . "<br>";
+		echo "<span class='titulo-data'>Saldo do Título:</span>" 			. 'R$ '.$this->valor($this->data->saldotitulo) . "<br>"; 
+		echo "<span class='titulo-data'>Data de emissão:</span>" 			. $this->date($this->data->dataemissao) . "<br>";
+		echo "<span class='titulo-data'>Vencimento:</span>" 				. $this->date($this->data->vencimento) . "<br>";             
+		echo "<span class='titulo-data'>Nº Tit. Bco.:</span>" 		. $this->data->nossonumero . "<br>";
+		echo "<span class='titulo-data'>Cód. do Ced/Ag:</span>" 	. $this->data->codigocedente_agencia . "<br>"; 
+		echo "<span class='titulo-data'>Praça de protesto:</span>" 			. $this->data->pracaprotesto . "<br>";
+		echo "<span class='titulo-data'>Tipo de endosso:</span>";
+		if($this->data->tipoendosso == "M") 
+			echo "Mandato"; 
+		else 
+			if($this->data->tipoendosso == "T") 
+				echo "Translativo"; 
+			else 
+				echo "Sem endosso";      
+	?>
+</div>
+<div style="width: 460px; float: right;">
+<?php
+	echo "<h3>Devedor</h3> " ;
+	echo $this->data->nome . "<br>";
+	if($this->data->tipoidentificacao == 1) 
+		echo "CNPJ: ";
+	else 
+		echo "CPF: ";
+	echo $this->documento($this->data->numeroidentificacao, $this->data->tipoidentificacao) . "<br>";
+	echo "Endereço: " . $this->data->endereco;
+       
+?>
+<?php 
+	echo "<h3>Cedente</h3> "; 
+	echo $this->data->nomecedente . "<br>";
+	if(isset($this->data->tipoidentificacaocedente)){
+		if($this->data->tipoidentificacaocedente == 1) 
+			echo "CNPJ ";
+		else 
+			echo "CPF: ";
+		echo $this->documento($this->data->documentocedente, $this->data->tipoidentificacaocedente) . "<br>";
+	}       
+?>
+<?php
+	echo "<h3>Sacador</h3> " ;
+	echo $this->data->nomesacador . "<br>";
+	if(isset($this->data->tipoidentificacaosacador)){
+		if($this->data->tipoidentificacaosacador == 1) 
+			echo "CNPJ: ";
+		else 
+			echo "CPF: ";
+		echo $this->documento($this->data->documentosacador, $this->data->tipoidentificacaosacador) . "<br>";
+	}              
+?>
+<?php
+	echo "<h3>Apresentante</h3> " ;
+	echo $this->data->nomeapresentante . "<br>";
+	if(isset($this->data->tipoidentificacaoapresentante)){
+		if($this->data->tipoidentificacaoapresentante == 1) 
+			echo "CNPJ: "; 
+		else 
+			echo "CPF: ";
+		echo $this->documento($this->data->documentoapresentante, $this->data->tipoidentificacaoapresentante) . "<br>";
+	}       
+?>
+</div>
+<hr class="clear" />
+<hr />
+<?php
+	echo"<h2>Histórico do Título</h2> ";
+	foreach($this->historico as $hist ){
+		echo '<i>'.$this->date($hist->data_historico) . '</i> - ' . $hist->descricao . "<br>" ;
+	}
+?>

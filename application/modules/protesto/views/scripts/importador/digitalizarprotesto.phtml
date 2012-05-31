@@ -1,0 +1,379 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<!-- a href="<?php //echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getpessoa', 'doc'=>'02968807102'), null, true); ?>" id="back-link">voltar</a-->
+
+<h1>Entrada Manual de Título </h1>
+<hr/>
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<?php echo $this->form; ?>
+
+<style>
+input{
+	text-transform: uppercase;
+} 
+</style>
+
+<script type="text/javascript">
+		
+	$(function() {
+		var tabs = $('#form-tab');
+		var legends = $(tabs).find('fieldset').get();
+		
+		var titles = $('<ul></ul>');
+		$.each(legends, function(index, value) { 
+			var legend = $(value).find('legend');
+			
+			var id = $(value).attr('id');
+			var a = $('<a></a>').attr('href', '#' + id).text($(legend).text());
+			var li = $('<li></li>').append(a);
+			
+			$(legend).remove();
+			
+			$(titles).append(li);			
+			var div = $('<div></div>').attr('id', id);
+			$(div).html($(value).html());
+			$(tabs).append(div);
+			
+			$(value).remove();
+		});
+		$(tabs).prepend(titles);
+		$(tabs).tabs();
+		
+		
+		/*--------------------------------------------------------------*/
+
+		$('#banco').change(function() { 
+			
+	    	var id = $(this).val();		    	    			     
+
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto', 'controller'=>'importador', 'action'=>'getagencias'), null, true); ?>",
+    			dataType:'html',
+    			encoding: 'utf-8',
+   				data:{id: id},
+    			type:'GET',
+    			success: function(data){
+            				$('#idAgencia').html(data);
+    					 }
+			});
+		});
+		
+		$('#uf_devedor').change(function() { 
+		
+	    	var id = $(this).val();		    	    			     
+
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto', 'controller'=>'importador' , 'action'=>'getcidades'), null, true); ?>",
+    			dataType:'html',
+    			encoding: 'utf-8',
+   				data:{id: id},
+    			type:'GET',
+    			success: function(data){
+            				$('#cidade_devedor').html(data);
+    					 }
+			});
+		});
+		
+		$('#uf_cedente').change(function() { 
+		
+	    	var id = $(this).val();		    	    			     
+		    $.ajax({
+		    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador','action'=>'getcidades'), null, true); ?>",
+        			dataType:'html',
+        			encoding: 'utf-8',
+       				data:{id: id},
+        			type:'GET',
+        			success: function(data){
+                				$('#cidade_cedente').html(data);
+        					 }
+    		});
+		});
+		
+		$('#uf_apresentante').change(function() { 
+		
+	    	var id = $(this).val();		    	    			     
+		    $.ajax({
+		    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador','action'=>'getcidades'), null, true); ?>",
+        			dataType:'html',
+        			encoding: 'utf-8',
+       				data:{id: id},
+        			type:'GET',
+        			success: function(data){
+                				$('#cidade_apresentante').html(data);
+        					 }
+    		});
+		});
+		
+		$('#uf_sacador').change(function() { 
+		
+	    	var id = $(this).val();		    	    			     
+		    $.ajax({
+		    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador','action'=>'getcidades'), null, true); ?>",
+        			dataType:'html',
+        			encoding: 'utf-8',
+       				data:{id: id},
+        			type:'GET',
+        			success: function(data){
+                				$('#cidade_sacador').html(data);
+        					 }
+    		});
+		});
+
+		/*-----------------------------------------------------------*/
+
+		$('input[name="cep_devedor"]').setMask('99.999-999');
+		$('input[name="cep_cedente"]').setMask('99.999-999');
+		$('input[name="cep_apresentante"]').setMask('99.999-999');
+		$('input[name="cep_sacador"]').setMask('99.999-999');
+
+		$('input[name="dataemissaotitulo"]').setMask('date');
+		$('input[name="datavencimentotitulo"]').setMask('date');
+
+		$('input[name="valortitulo"]').setMask('decimal');
+		$('input[name="saldotitulo"]').setMask('decimal');
+		$('input[name="valorcustascartorio"]').setMask('decimal'); 
+		$('input[name="intim_out"]').setMask('decimal');
+		$('input[name="conducao"]').setMask('decimal');
+		$('input[name="certidao"]').setMask('decimal');
+		$('input[name="taxajudiciaria"]').setMask('decimal');
+
+
+		$('input[name="documento_devedor"]').setMask('cnpj');
+		$('input[name="tipo_identificacao_devedor"]').change(function(){
+			if($(this).val() == '2'){	
+				$('input[name="documento_devedor"]').setMask('cpf');		
+			}else{
+				$('input[name="documento_devedor"]').setMask('cnpj');
+			}
+		})
+		
+		$('input[name="documento_cedente"]').setMask('cnpj');
+		$('input[name="tipo_identificacao_cedente"]').change(function(){
+			if($(this).val() == '2'){	
+				$('input[name="documento_cedente"]').setMask('cpf');		
+			}else{
+				$('input[name="documento_cedente"]').setMask('cnpj');
+			}
+		})
+		
+		$('input[name="documento_sacador"]').setMask('cnpj');
+		$('input[name="tipo_identificacao_sacador"]').change(function(){
+			if($(this).val() == '2'){	
+				$('input[name="documento_sacador"]').setMask('cpf');		
+			}else{
+				$('input[name="documento_sacador"]').setMask('cnpj');
+			}
+		})
+		
+		$('input[name="documento_apresentante"]').setMask('cnpj');
+		$('input[name="tipo_identificacao_apresentante"]').change(function(){
+			if($(this).val() == '2'){	
+				$('input[name="documento_apresentante"]').setMask('cpf');		
+			}else{
+				$('input[name="documento_apresentante"]').setMask('cnpj');
+			}
+		})
+
+		/*----------------------------------------------------------------------------------*/		
+		$('#valortitulo').change(function() { 
+			
+	    	var valor = $(this).val();
+	    	
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getemolumento'), null, true); ?>",
+    			dataType:'html',
+    			encoding: 'utf-8',
+   				data:{valor: valor},
+    			type:'GET',
+    			onFailure: function() {
+                    	    alert("Falha na execução desta tarefa.");
+                },
+    			success: function(data){
+                	$('#valorcustascartorio').html(data);
+
+                	$("#valorcustascartorio").val($('#emolumento').val());
+
+    			}
+			});
+		});
+
+
+		/*----------------------------------------------------------------------------------------------*/
+		$('#documento_devedor').change(function() { 
+			
+	    	var doc = $(this).val();
+			var i = doc.replace(/[^0-9]/g, "");
+	    		
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getpessoa'), null, true); ?>",
+    			dataType:'html',
+    			//encoding: 'iso-8859-1',
+   				data:{doc: doc},
+    			type:'GET',
+    			onFailure: function() {
+                    	    alert("Falha na execução desta tarefa.");
+                },
+    			success: function(data){
+                	$('#nome_devedor').html(data);
+					//alert('#idnome'+i);
+                	$("#nome_devedor").val($('#idnome'+i).val()) ;
+                	
+                	$("#endereco_devedor").val($('#idendereco'+i).val());
+                	$("#cep_devedor").val($('#idcep'+i).val());
+                	$("#complemento_devedor").val($('#idcomplemento'+i).val());
+                	$("#bairro_devedor").val($('#idbairro'+i).val());
+                	$("#numero_devedor").val($('#idnumero'+i).val());
+                	$("#obs_devedor").val($('#idobs'+i).val());
+					var uf = $('#iduf'+i).val();
+                	$("#uf_devedor").val(uf);
+                	
+        	    	$.ajax({
+        	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getcidades'), null, true); ?>",
+            			dataType:'html',
+            			encoding: 'utf-8',
+           				data:{id: uf},
+            			type:'GET',
+            			success: function(data){
+                    				$('#cidade_devedor').html(data);
+            					 }
+        			});
+    			}
+			});
+		});
+
+
+		$('#documento_cedente').change(function() { 
+			
+	    	var doc = $(this).val();
+	    	var i = doc.replace(/[^0-9]/g, "");
+	    	
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getpessoa'), null, true); ?>",
+    			dataType:'html',
+    			//encoding: 'iso-8859-1',
+   				data:{doc: doc},
+    			type:'GET',
+    			onFailure: function() {
+                    	    alert("Falha na execução desta tarefa.");
+                },
+    			success: function(data){
+                	$('#nome_cedente').html(data);
+
+                	$("#nome_cedente").val($('#idnome'+i).val()) ;
+                	
+                	$("#endereco_cedente").val($('#idendereco'+i).val());
+                	$("#cep_cedente").val($('#idcep'+i).val());
+                	$("#complemento_cedente").val($('#idcomplemento'+i).val());
+                	$("#bairro_cedente").val($('#idbairro'+i).val());
+                	$("#numero_cedente").val($('#idnumero'+i).val());
+                	$("#obs_cedente").val($('#idobs'+i).val());
+                	var r = $('#idobs'+i).val();
+                	//alert(r);
+					var uf = $('#iduf'+i).val();
+                	$("#uf_cedente").val(uf);
+                	
+        	    	$.ajax({
+        	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getcidades'), null, true); ?>",
+            			dataType:'html',
+            			encoding: 'utf-8',
+           				data:{id: uf},
+            			type:'GET',
+            			success: function(data){
+                    				$('#cidade_cedente').html(data);
+            					 }
+        			});
+    			}
+			});
+		});
+
+		$('#documento_apresentante').change(function() { 
+			
+	    	var doc = $(this).val();
+	    	var i = doc.replace(/[^0-9]/g, "");
+	    	
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getpessoa'), null, true); ?>",
+    			dataType:'html',
+    			//encoding: 'iso-8859-1',
+   				data:{doc: doc},
+    			type:'GET',
+    			onFailure: function() {
+                    	    alert("Falha na execução desta tarefa.");
+                },
+    			success: function(data){
+                	$('#nome_apresentante').html(data);
+
+                	$("#nome_apresentante").val($('#idnome'+i).val()) ;
+                	
+                	$("#endereco_apresentante").val($('#idendereco'+i).val());
+                	$("#cep_apresentante").val($('#idcep'+i).val());
+                	$("#complemento_apresentante").val($('#idcomplemento'+i).val());
+                	$("#bairro_apresentante").val($('#idbairro'+i).val());
+                	$("#numero_apresentante").val($('#idnumero'+i).val());
+                	$("#obs_apresentante").val($('#idobs'+i).val());
+					var uf = $('#iduf'+i).val();
+                	$("#uf_apresentante").val(uf);
+                	
+        	    	$.ajax({
+        	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getcidades'), null, true); ?>",
+            			dataType:'html',
+            			encoding: 'utf-8',
+           				data:{id: uf},
+            			type:'GET',
+            			success: function(data){
+                    				$('#cidade_apresentante').html(data);
+            					 }
+        			});
+    			}
+			});
+		});
+
+
+	$('#documento_sacador').change(function() { 
+			
+	    	var doc = $(this).val();
+	    	var i = doc.replace(/[^0-9]/g, "");
+	    	
+	    	$.ajax({
+	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getpessoa'), null, true); ?>",
+    			dataType:'html',
+    			//encoding: 'iso-8859-1',
+   				data:{doc: doc},
+    			type:'GET',
+    			onFailure: function() {
+                    	    alert("Falha na execução desta tarefa.");
+                },
+    			success: function(data){
+                	$('#nome_sacador').html(data);
+
+                	$("#nome_sacador").val($('#idnome'+i).val()) ;
+                	
+                	$("#endereco_sacador").val($('#idendereco'+i).val());
+                	$("#cep_sacador").val($('#idcep'+i).val());
+                	$("#complemento_sacador").val($('#idcomplemento'+i).val());
+                	$("#bairro_sacador").val($('#idbairro'+i).val());
+                	$("#numero_sacador").val($('#idnumero'+i).val());
+                	$("#obs_sacador").val($('#idobs'+i).val());
+					var uf = $('#iduf'+i).val();
+                	$("#uf_sacador").val(uf);
+                	
+        	    	$.ajax({
+        	    		url:"<?php echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getcidades'), null, true); ?>",
+            			dataType:'html',
+            			encoding: 'utf-8',
+           				data:{id: uf},
+            			type:'GET',
+            			success: function(data){
+                    				$('#cidade_sacador').html(data);
+            					 }
+        			});
+    			}
+			});
+		});
+		
+					
+	});
+</script>
+
+	

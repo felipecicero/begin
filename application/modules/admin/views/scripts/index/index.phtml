@@ -1,0 +1,15 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Administração</h1>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario','action' => 'usuarios'), null, true); ?>" title="Usuários">Usuários</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'perfil','action' => 'perfis'), null, true); ?>" title="Perfis">Perfis</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'index'), null, true); ?>" title="Cartório">Cartório</a></li>
+	
+</ul>

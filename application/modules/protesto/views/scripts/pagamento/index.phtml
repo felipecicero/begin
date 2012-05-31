@@ -1,0 +1,12 @@
+<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Pagamento</h1>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li><a href="<?php echo $this->url(array('controller' => 'pagamento', 'action' => 'pagartitulo'), null, true); ?>">
+		Pagamento de Títulos</a></li>
+	<li><a href="<?php echo $this->url(array('controller' => 'pagamento', 'action' => 'index'), null, true); ?>">
+		Devolução de Títulos</a></li>
+</ul>

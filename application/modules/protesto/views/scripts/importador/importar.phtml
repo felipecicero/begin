@@ -1,0 +1,16 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'importador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Importar Arquivo</h1>
+<hr/>
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<div id="dialog-modal" title="Aguarde">
+			<div id="progressbar" class="ui-corner-all"></div>
+</div>
+
+<?php echo $this->form; ?>
+
+
+
+
+

@@ -1,0 +1,66 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Lista de Usuários</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'cadastrar'), null, true); ?>" title="Novo Usuário">Novo Usuário</a>
+	</li>
+</ul>
+
+<table cellpadding="1" cellspacing="1" border="1" class="display" id="tabela" >
+
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Nome</th>
+            <th>Perfil</th>
+            <th>e-mail</th>
+            <th>Login</th>
+            <th>Nascimento</th>
+            <th>Telefone</th>
+            <th>Útimo Acesso</th>
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->user as $user ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($user->nome); ?></td>
+                <td><?php echo $this->escape($user->idPapel); ?></td>
+                <td><?php echo $this->escape($user->email); ?></td>
+                <td><?php echo $this->escape($user->login); ?></td>
+                <td><?php echo implode("/", array_reverse(explode("-", $this->escape($user->nascimento) ))); ?></td>
+                <td><?php echo $this->escape($user->telefone); ?></td>
+                <td><?php echo $this->escape($user->data_ultimoacesso); ?></td>
+                <td align="center">
+                    <a href="<?php echo $this->url(array(
+                    				   'module' => 'admin',
+                                       'controller' => 'usuario',
+                                       'action'     => 'editar',
+                                       'idUsuario'         => $this->escape($user->idUsuario))); ?>" title="Editar">Editar</a>
+                    &nbsp;
+                    <a href="<?php echo $this->url(array(
+                    				   'module' => 'admin',
+                                       'controller' => 'usuario',
+                                       'action'     => 'deletar',
+                                       'idUsuario'  => $this->escape($user->idUsuario))); ?>" title="Apagar">Apagar</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	oTable = $('#example').dataTable({
+		"bPaginate": true,
+		"bJQueryUI": false,
+		"sPaginationType": "full_numbers"
+	});
+});
+</script>

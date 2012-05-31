@@ -1,0 +1,45 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'listaedital'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Edital <?php echo implode("/", array_reverse(explode("-", $this->dataedital ))); ?></h1>
+<hr />
+<ul>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'exportaredital')); ?>" title="Exportar">Exportar Edital</a></li>
+</ul>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+ 
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th> 
+            <th> Apontamento </th>
+            <th> Devedor </th>
+            <th> Credor </th>
+            <th> Vencimento </th>
+            <th> Número do Título </th>
+            <th> Valor </th>
+            <th> Excluir </th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->titulo as $titulo ) { $i=$i+1; ?>
+            <tr class="<?php if($this->escape($titulo->docamigo)) echo 'amigo' ; ?>">
+            	<td><?php echo $i; ?></td>
+            	<td><?php echo $this->escape($titulo->apontamento); ?></td>
+            	<td><?php echo $this->escape($titulo->devedor); ?></td>
+            	<td><?php echo $this->escape($titulo->credor); ?></td>
+            	<td><?php echo $this->date($this->escape($titulo->vencimento)); ?></td>
+            	<td><?php echo $this->escape($titulo->numerotitulo); ?></td>
+            	<td><?php echo $this->valor($this->escape($titulo->valor)); ?></td> 
+            	<td>
+                    <a href="<?php echo $this->url(array(
+                    				   'module'=>'protesto', 
+                                       'controller' => 'verificador',
+                                       'action'     => 'excluirtituloedital',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Apagar">ícone</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+          
+</table>

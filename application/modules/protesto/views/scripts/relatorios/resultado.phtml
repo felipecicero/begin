@@ -1,0 +1,35 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+<h1>Resultado da Consulta</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<table class="display" id="tabela">
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Protocolo</th>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>            
+            <th>Espécie</th>
+            <th>Quitar</th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->titulos as $titulo ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($titulo->protocolo); ?></td>
+                <td><?php echo $this->escape($titulo->nome); ?></td>
+                <td><?php echo $this->documento($this->escape($titulo->numeroidentificacao), (int)$this->escape($titulo->tipoidentificacao)); ?></td>               
+                <td><?php echo $this->escape($titulo->especie); ?></td>
+                 <td align="center">
+                	<a href="<?php echo $this->url(array(
+                                       'controller' => 'pagamento',
+                                       'action'     => 'quitartitulo',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Editar">ícone</a>
+                </td>                
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

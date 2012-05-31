@@ -1,0 +1,7 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'perfil', 'action' => 'perfis'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Editar Perfil</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<?php if ( isset($this->form) ) { echo $this->form; } ?>

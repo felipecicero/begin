@@ -1,0 +1,33 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Títulos</h1>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul id="menu-grid">
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'boletos'), null, true); ?>" title="Gerar boletos">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Boleto</a></li>	
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador','action' => 'notificacao'), null, true); ?>" title="Gerar notificação">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Notificação</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'verificador','action' => 'index'), null, true); ?>" title="Verificação de notificação">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Verificador</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'pagamento','action' => 'index'), null, true); ?>" title="Pagamento de títulos">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Pagamento</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'index'), null, true); ?>" title="Protesto de títulos">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Protestador</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'suspender'), null, true); ?>" title="Suspender protestos.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Suspender protesto</a></li>
+		
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'cancelar'), null, true); ?>" title="Cancelar protestos.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Cancelar protesto</a></li>
+		
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'sustar'), null, true); ?>" title="Sustar títulos.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Sustar Título</a></li>
+	
+	<hr class="clear"/>
+</ul>

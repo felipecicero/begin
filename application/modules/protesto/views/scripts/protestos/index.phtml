@@ -1,0 +1,12 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Protesto</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'protestos'), null, true); ?>" title="Titulos á protestar.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Títulos à orotestar</a></li>
+	<li><a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'listarserasa'), null, true); ?>" title="Gerar arquivos para o Serasa.">
+		<img src="<?php echo $this->baseUrl(); ?>/css/icons/blank.png" /><br/>Arquivo para o Serasa</a></li>
+</ul>

@@ -1,0 +1,142 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes', 'action' => 'titulos'), null, true); ?>" id="back-link">voltar</a>
+<?php
+	echo"<h1>DADOS DO TÍTULO</h1> ";
+?>   
+<hr />            
+
+<div style="float: left; width: 460px;">     
+	<?php
+		echo "<span class='titulo-data'>Nº Protocolo:</span>" 				. $this->data->protocolo . "<br>";
+		echo "<span class='titulo-data'>Data de entrada:</span>" 			. $this->date($this->data->data_protocolo) . "<br>"; 
+		echo "<span class='titulo-data'>Situação atual:</span>" 			. '<span class="titulo-status">'.$this->data->situacaoatual . "</span><br><br>";
+		
+		echo "<span class='titulo-data'>Livro:</span>" 						. $this->data->livro . "<br>";
+		echo "<span class='titulo-data'>Página:</span>" 					. $this->data->folha . "<br><br>";
+
+		echo "<span class='titulo-data'>Espécie:</span>" 					. $this->data->codigo . "<br>";
+		echo "<span class='titulo-data'>Nº Título:</span>" 					. $this->data->numerotitulo . "<br>";
+		echo "<span class='titulo-data'>Valor Título:</span>" 				. 'R$ '.$this->valor($this->data->valortitulo) . "<br>";
+		echo "<span class='titulo-data'>Saldo do Título:</span>" 			. 'R$ '.$this->valor($this->data->saldotitulo) . "<br>"; 
+		echo "<span class='titulo-data'>Data de emissão:</span>" 			. $this->date($this->data->dataemissao) . "<br>";
+		echo "<span class='titulo-data'>Vencimento:</span>" 				. $this->date($this->data->vencimento) . "<br>";             
+		echo "<span class='titulo-data'>Nº Tit. Bco.:</span>" 				. $this->data->nossonumero . "<br>";
+		echo "<span class='titulo-data'>Cód. do Ced/Ag:</span>" 			. $this->data->codigocedente_agencia . "<br>"; 
+		echo "<span class='titulo-data'>Praça de protesto:</span>" 			. $this->data->pracaprotesto . "<br>";
+		echo "<span class='titulo-data'>Tipo de endosso:</span>";
+		if($this->data->tipoendosso == "M") 
+			echo "Mandato"; 
+		else 
+			if($this->data->tipoendosso == "T") 
+				echo "Translativo"; 
+			else 
+				echo "Sem endosso";      
+	?>
+</div>
+<div style="width: 460px; float: right;">
+<?php $s  = $this->data->idSituacao; ?>
+<!-- Imprimir boleto -->
+<?php if($s == 20){?>
+	<a class="icon-button boleto" href="<?php 
+		echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'pdfboleto', 'idProtesto' => $this->data->idProtesto)); 
+		?>" title="Gerar Boleto.">Boleto</a>
+<!-- Envia para edital -->
+<?php }if($s == 22){?>
+	<a class="icon-button edital" href="<?php 
+		echo $this->url(array('module'=>'protesto', 'controller' => 'verificador', 'action' => 'edital', 'idProtesto' => $this->data->idProtesto));
+	?>" title="Enviar para edital.">Edital</a>
+<!-- Protesta -->
+<?php }if($s == 22 || $s == 21){?>
+	<a class="icon-button protestar" href="<?php
+		echo $this->url(array('module'=>'protesto','controller' => 'protestos','action' => 'protestartitulo','idProtesto' => $this->escape($this->data->idProtesto)));
+	?>" title="Protestar título.">Protestar</a>
+<!-- Suspende -->
+<?php }if($s != 2 && $s != 1 && $s != 3 && $s != 9 && $s != 4){?>
+	<a class="icon-button suspender" href="<?php 
+		echo $this->url(array( 'module'=>'protesto', 'controller' => 'situacoes', 'action' => 'suspenderprotesto', 'idProtesto' => $this->escape($this->data->idProtesto))); 
+	?>" title="Suspender título.">Suspender</a> 
+<!-- Revogar Suspender -->
+<?php }if($s == 9){?>
+	<a class="icon-button desfazer" href="<?php
+		echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action'=> 'revogarsuspensao','idProtesto'=> $this->escape($this->data->idProtesto)));
+	?>" title="Revogar suspender.">Revogar suspender</a>
+<!-- Susta -->
+<?php }if($s == 2){?>
+	<a class="icon-button sustar" href="<?php
+		echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action'=> 'sustarprotesto','idProtesto'=> $this->escape($this->data->idProtesto)));
+	?>" title="Sustar título.">Sustar</a>
+<!-- Revogar sustar -->
+<?php }if($s == 4){?>
+	<a class="icon-button desfazer" href="<?php
+		echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action' => 'revogarsustacao','idProtesto'=> $this->escape($this->data->idProtesto)));
+	?>" title="Revogar sustar.">Revogar sustar</a>
+<!-- Cancela -->
+<?php }if($s != 3 && $s != 1){?>
+	<a class="icon-button cancelar" href="<?php
+		echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action'=> 'cancelarprotesto','idProtesto'=> $this->escape($this->data->idProtesto)));
+	?>" title="Cancelar título.">Cancelar</a>
+<!-- Revogar Cancelamento -->
+<?php }if($s == 3){?>
+	<a class="icon-button desfazer" href="<?php
+		echo $this->url(array('module'=>'protesto', 'controller' => 'situacoes','action'=> 'revogarcancelamento','idProtesto'=> $this->escape($this->data->idProtesto)));
+	?>" title="Revogar cancelar.">Revogar cancelar</a>
+
+<!-- Pagar -->
+<?php }if($s != 1 && $s != 3 && $s != 4 && $s != 4){?>
+	<a class="icon-button pagar" href="<?php
+		echo $this->url(array('controller' => 'pagamento','action'=> 'quitartitulo','idProtesto'=> $this->escape($this->data->idProtesto)));
+	?>" title="Pagar título.">Pagar</a>
+<?php }?>
+
+<?php
+	echo "<h3>Devedor</h3> " ;
+	echo $this->data->nome . "<br>";
+	if($this->data->tipoidentificacao == 1) 
+		echo "CNPJ: ";
+	else 
+		echo "CPF: ";
+	echo $this->documento($this->data->numeroidentificacao, $this->data->tipoidentificacao) . "<br>";
+	echo "Endereço: " . $this->data->endereco;
+       
+?>
+<?php 
+	echo "<h3>Cedente</h3> "; 
+	echo $this->data->nomecedente . "<br>";
+	if(isset($this->data->tipoidentificacaocedente)){
+		if($this->data->tipoidentificacaocedente == 1) 
+			echo "CNPJ ";
+		else 
+			echo "CPF: ";
+		echo $this->documento($this->data->documentocedente, $this->data->tipoidentificacaocedente) . "<br>";
+	}       
+?>
+<?php
+	echo "<h3>Sacador</h3> " ;
+	echo $this->data->nomesacador . "<br>";
+	if(isset($this->data->tipoidentificacaosacador)){
+		if($this->data->tipoidentificacaosacador == 1) 
+			echo "CNPJ: ";
+		else 
+			echo "CPF: ";
+		echo $this->documento($this->data->documentosacador, $this->data->tipoidentificacaosacador) . "<br>";
+	}              
+?>
+<?php
+	echo "<h3>Apresentante</h3> " ;
+	echo $this->data->nomeapresentante . "<br>";
+	if(isset($this->data->tipoidentificacaoapresentante)){
+		if($this->data->tipoidentificacaoapresentante == 1) 
+			echo "CNPJ: "; 
+		else 
+			echo "CPF: ";
+		echo $this->documento($this->data->documentoapresentante, $this->data->tipoidentificacaoapresentante) . "<br>";
+	}       
+?>
+</div>
+<hr class="clear" />
+<hr />
+<?php
+	echo"<h2>Histórico do Título</h2> ";
+	foreach($this->historico as $hist ){
+		echo '<i>'.$this->date($hist->data_historico) . '</i> - ' . $hist->descricao . "<br>" ;
+	}
+?>

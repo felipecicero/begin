@@ -1,0 +1,45 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'vigencias')); ?>" id="back-link">voltar</a>
+ 
+<h1>Custas do Cartório</h1>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action'     => 'cadastrarcusta')); ?>" title="Cadastrar Custa">Cadastrar Custa</a>
+	</li>
+</ul>
+ 
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+ 
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Nome</th>
+            <th>Valor da Custa</th>            
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->custas as $custa ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($custa->nome); ?></td>
+                <td align="right"><?php echo $this->escape($this->valor($custa->valor)); ?></td>               
+                <td align="center">
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'editarcusta',
+                                       'idCusta'         => $this->escape($custa->idCusta))); ?>" title="Editar">Editar</a>
+                    &nbsp;
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'deletarcusta',
+                                       'idCusta'         => $this->escape($custa->idCusta))); ?>" title="Apagar">Apagar</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+          
+</table>

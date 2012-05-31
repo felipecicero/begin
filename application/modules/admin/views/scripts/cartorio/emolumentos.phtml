@@ -1,0 +1,47 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'vigencias')); ?>" id="back-link">voltar</a>
+
+<h1>Emolumentos do Cartório</h1>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'cadastraremolumento')); ?>" title="Cadastrar Emolumento">Cadastrar Emolumento</a>
+	</li>
+</ul>
+ 
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+ 
+<table cellspacing="1" cellpadding="1" border="1" class="display" id="tabela"  >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Valor Inicial</th>
+			<th>Valor Final</th>
+            <th>Valor do Emolumento</th>            
+            <th></th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->emolumentos as $emolumento ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $this->escape($this->valor($emolumento->valor_inicial)); ?></td>
+				<td><?php echo $this->escape($this->valor($emolumento->valor_final)); ?></td>
+                <td align="right"><?php echo $this->escape($this->valor($emolumento->emolumento)); ?></td>               
+                <td align="center">
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'editaremolumento',
+                                       'idEmolumento'         => $this->escape($emolumento->idEmolumento))); ?>" title="Editar">Editar</a>
+                    &nbsp;
+                    <a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'deletaremolumento',
+                                       'idEmolumento'         => $this->escape($emolumento->idEmolumento))); ?>" title="Apagar">Apagar</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

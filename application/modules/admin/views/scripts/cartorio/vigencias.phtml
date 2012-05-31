@@ -1,0 +1,53 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'index')); ?>" id="back-link">voltar</a>
+
+<h1>Custas do Cartório</h1>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'cadastrarvigencia')); ?>" title="Nova Vigência de Emolumentos">Nova Vigência de Emolumentos</a>
+	</li>
+</ul>
+
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<table cellspacing="1" cellpadding="1" border="1" class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Vigência das Custas</th>
+            <th>Custas</th>
+            <th>Emolumentos</th>
+            <th>Apagar</th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->vigencias as $vigencia ) { $i=$i+1; ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td align="center"><?php echo implode("/", array_reverse(explode("-", $this->escape($vigencia->vigencia)))); ?></td>
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'custas',
+                                       'idVigencia'         => $this->escape($vigencia->idVigencia))); ?>" title="Editar">ícone</a>
+                </td>   
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'emolumentos',
+                                       'idVigencia'         => $this->escape($vigencia->idVigencia))); ?>" title="Editar">ícone</a>
+                </td>            
+                <td align="center">
+                	<a href="<?php echo $this->url(array(
+                                       'module' => 'admin', 
+									   'controller' => 'cartorio',
+                                       'action'     => 'deletarvigencia',
+                                       'idVigencia'         => $this->escape($vigencia->idVigencia))); ?>" title="Editar">ícone</a>
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+          
+</table>

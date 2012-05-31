@@ -1,0 +1,20 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+<h1>Segurança</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul id="menu-grid">
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario','action' => 'cadastrar'), null, true); ?>" title="Cadastrar Usuário">
+	<img src="<?php echo $this->baseUrl(); ?>/css/icons/cadastrouser.png" /><br/>Cadastrar Usuário</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'usuarios'), null, true); ?>" title="Usuários">
+	<img src="<?php echo $this->baseUrl(); ?>/css/icons/user.png" /><br/>Usuários</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'perfil', 'action' => 'cadastrarperfil'), null, true); ?>" title="Usuários">
+	<img src="<?php echo $this->baseUrl(); ?>/css/icons/novoperfil.png" /><br/>Novo Perfil</a></li>
+	
+	<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'perfil', 'action' => 'perfis'), null, true); ?>" title="Usuários">
+	<img src="<?php echo $this->baseUrl(); ?>/css/icons/perfil.png" /><br/>Perfis</a></li>
+	
+	<hr class="clear"/>	
+</ul>

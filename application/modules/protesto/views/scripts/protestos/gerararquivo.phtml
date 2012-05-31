@@ -1,0 +1,53 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'listarserasa'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Títulos para o SERASA - <?php echo implode("/", array_reverse(explode("-", $this->dataserasa ))); ?></h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul>
+	<li>
+		<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'downloadserasa', 'idDownload' => 1)); ?>" title="Download do arquivo para envio ao serasa (Inclusão de Títulos).">Gerar Arquivo (Inclusão)</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'protestos', 'action' => 'downloadserasa', 'idDownload' => 2)); ?>" title="Download do arquivo para envio ao serasa Cancelamento de Títulos).">Gerar Arquivo (Cancelamento)</a>
+	</li>
+</ul>
+ 
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th> 
+            <th> Protocolo </th>
+            <th> Devedor </th>
+            <th> Credor </th>
+            <th> Vencimento </th>
+            <th> Número do Título </th>
+            <th> Valor </th>
+            <th> Operação </th>
+            <th> Excluir </th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->titulo as $titulo ) { $i=$i+1; ?>
+            
+            <tr>
+            	<td><?php echo $i; ?></td>
+            	<td><?php echo $this->escape($titulo->apontamento); ?></td>
+            	<td><?php echo $this->escape($titulo->devedor); ?></td>
+            	<td><?php echo $this->escape($titulo->credor); ?></td>
+            	<td><?php echo $this->date($this->escape($titulo->vencimento)); ?></td>
+            	<td><?php echo $this->escape($titulo->numerotitulo); ?></td>
+            	<td><?php echo $this->valor($this->escape($titulo->valor)); ?></td>
+            	<td><?php if($this->escape($titulo->codigooperacao) == 'i') echo "Incerção"; else echo "Cancelamento"; ?></td>  
+            	<td align="center">
+                    <a href="<?php echo $this->url(array(
+                    				   'module'=>'protesto', 
+                                       'controller' => 'protestos',
+                                       'action'     => 'excluirtituloarquivo',
+                                       'idProtesto'         => $this->escape($titulo->idProtesto))); ?>" title="Apagar">ícone</a>
+                </td>              
+            </tr>
+        <?php } ?>        
+     </tbody>
+          
+</table>

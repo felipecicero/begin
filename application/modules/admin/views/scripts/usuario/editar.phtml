@@ -1,0 +1,7 @@
+<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'usuario', 'action' => 'usuarios'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Editar Usuário</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<?php if ( isset($this->form) ) { echo $this->form; } ?>

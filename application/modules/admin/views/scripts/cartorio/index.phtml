@@ -1,0 +1,72 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'index', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Administração</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<ul id="menu-grid">
+	<?php $m_cartorio = new Cartorio();
+		  $cartorio = $m_cartorio->getCartorio();
+		  //print_r($cartorio->idCartorio);exit;
+		  if(!isset($cartorio->idCartorio) ){
+	?>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'cadastrarcartorio'), null, true); ?>" title="Cadastrar dados a respeito do cartório.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/cartorio.png" />
+			<br/>
+			Cadastrar Cartório
+		</a>
+	</li>
+	<?php } ?>
+	
+	
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'editarcartorio'), null, true); ?>" title="Editar dados a respeito do cartório.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/cartorio.png" />
+			<br/>
+			Editar Cartório
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'autoridades'), null, true); ?>" title="Cadastrar e editar autoridades.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/autoridade.png" />
+			<br/>
+			Autoridades
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio', 'action' => 'abrangencias'), null, true); ?>" title="Faixa de CEP da praça.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/mapa.png" />
+			<br/>
+			Abrangência da Praça
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'vigencias'), null, true); ?>" title="Inserir custas e emolumentos.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/custas.png" />
+			<br/>
+			Custas
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'bancos'), null, true); ?>" title="Inserir bancos, agências e contas bancárias.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/bancos.png" />
+			<br/>
+			Bancos e contas
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'feriados'), null, true); ?>" title="Cadastrar feriados.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/feriados.png" />
+			<br/>
+			Feriados
+		</a>
+	</li>
+	<li>
+		<a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'cartorio','action' => 'amigos'), null, true); ?>" title="Cadastrar pessoas exclusas de notificações.">
+			<img src="<?php echo $this->baseUrl(); ?>/css/icons/amigos.png" />
+			<br/>
+			Amigos
+		</a>
+	</li>
+</ul>

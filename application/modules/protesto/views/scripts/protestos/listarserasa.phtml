@@ -1,0 +1,34 @@
+<a href="<?php echo $this->url(array('module'=>'protesto', 'controller' => 'notificador', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<h1>Lista de Arquivos para o SERASA</h1>
+<hr />
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+ 
+<table class="display" id="tabela" >
+    <thead>
+        <tr>
+            <th> # </th>
+            <th>Data</th>            
+            <th>Arquivo</th>
+        </tr>
+     </thead>
+     <tbody>
+        <?php $i=0; foreach ( $this->serasas as $serasa ) { $i=$i+1; ?>
+            <tr>
+            	<td><?php echo $i; ?></td>
+                <td><?php echo $this->date($this->escape($serasa->data_serasa)); ?></td>
+                
+                 <td align="center">
+                	<a href="<?php echo $this->url(array(
+                					   'module'=>'protesto', 
+                                       'controller' => 'protestos',
+                                       'action'     => 'gerararquivo',
+                                       'data'         => $this->escape($serasa->data_serasa))); ?>" title="Editar">ícone</a>
+                    &nbsp;
+                
+                </td>
+            </tr>
+        <?php } ?>        
+     </tbody>
+     
+</table>

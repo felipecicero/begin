@@ -1,0 +1,9 @@
+<a href="<?php echo $this->url(array('module' => 'protesto', 'controller' => 'relatorios', 'action' => 'index'), null, true); ?>" id="back-link">voltar</a>
+
+<!-- a href="<?php //echo $this->url(array('module'=>'protesto','controller'=>'importador' , 'action'=>'getpessoa', 'doc'=>'02968807102'), null, true); ?>" id="back-link">voltar</a-->
+
+<h1>Gerar Certidão</h1>
+<hr/>
+<div id="messenger"><?php echo $this->flashMessenger();?></div>
+
+<?php echo $this->form; ?>
