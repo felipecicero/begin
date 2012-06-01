@@ -636,6 +636,100 @@
             <viewFiltersDirectory/>
           </viewsDirectory>
         </moduleDirectory>
+        <moduleDirectory moduleName="registro">
+          <apisDirectory enabled="false"/>
+          <configsDirectory enabled="false"/>
+          <controllersDirectory>
+            <controllerFile controllerName="Index">
+              <actionMethod actionName="index"/>
+            </controllerFile>
+            <controllerFile controllerName="Registro">
+              <actionMethod actionName="index"/>
+              <actionMethod actionName="vigencias"/>
+              <actionMethod actionName="emolumentos"/>
+              <actionMethod actionName="custas"/>
+              <actionMethod actionName="cadastrarvigencia"/>
+              <actionMethod actionName="deletarvigencia"/>
+              <actionMethod actionName="editarvigencia"/>
+              <actionMethod actionName="cadastraremolumento"/>
+              <actionMethod actionName="editaremolumento"/>
+              <actionMethod actionName="deletaremolumento"/>
+              <actionMethod actionName="cadastrarcustas"/>
+              <actionMethod actionName="editarcustas"/>
+              <actionMethod actionName="deletarcustas"/>
+            </controllerFile>
+          </controllersDirectory>
+          <formsDirectory>
+            <formFile formName="RegVigencias"/>
+            <formFile formName="RegEmolumentos"/>
+            <formFile formName="RegCustas"/>
+          </formsDirectory>
+          <layoutsDirectory enabled="false"/>
+          <modelsDirectory>
+            <modelFile modelName="RegControleselos"/>
+            <modelFile modelName="RegEmolumentos"/>
+            <modelFile modelName="RegItempedidos"/>
+            <modelFile modelName="RegNatureza"/>
+            <modelFile modelName="RegPedidocertidao"/>
+            <modelFile modelName="RegPedidos"/>
+            <modelFile modelName="RegPessoas"/>
+            <modelFile modelName="RegPessoascitadas"/>
+            <modelFile modelName="RegProtocolo"/>
+            <modelFile modelName="RegRegistro"/>
+            <modelFile modelName="RegSelos"/>
+            <modelFile modelName="RegSituacoes"/>
+            <modelFile modelName="RegTipodocumentos"/>
+            <modelFile modelName="RegVigencias"/>
+          </modelsDirectory>
+          <viewsDirectory>
+            <viewScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Index">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="index"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="vigencias"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="emolumentos"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="custas"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="cadastrarvigencia"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="deletarvigencia"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="editarvigencia"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="cadastraremolumento"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="editaremolumento"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="deletaremolumento"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="cadastrarcustas"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="editarcustas"/>
+              </viewControllerScriptsDirectory>
+              <viewControllerScriptsDirectory forControllerName="Registro">
+                <viewScriptFile forActionName="deletarcustas"/>
+              </viewControllerScriptsDirectory>
+            </viewScriptsDirectory>
+            <viewHelpersDirectory/>
+            <viewFiltersDirectory/>
+          </viewsDirectory>
+        </moduleDirectory>
       </modulesDirectory>
       <viewsDirectory>
         <viewScriptsDirectory>

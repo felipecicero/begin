@@ -1064,12 +1064,3 @@ class Admin_CartorioController extends Zend_Controller_Action
     }
 
 }
-
-
-
-
-
-
-
-
-
